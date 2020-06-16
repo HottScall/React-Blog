@@ -65,4 +65,6 @@ A: 2 things:
 
 Whilst it looks like the return function in actions/index.js is returning JS objects, it's not. Remember, React is a framework that compiles your code from the > ES2016 code we write into ES2015 code which can't take types and payloads.
 
-Don't believe yourself? Add the all the code from const fetchPosts into babel.io and watch what is spues out.
+Unsure on this? Check out Lesson 164 in Modern React with Redux on Udemy.
+
+https://www.udemy.com/course/react-redux/learn/lecture/12586860#content

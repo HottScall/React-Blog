@@ -47,3 +47,10 @@ To recap this, view the lesson 161 - How to fetch data in a Redux app.
 - Now above the render method you can add the componentDidMount method and call this.props.fetchPosts
 
 <h2 align="centre"> Making a request from an Action Creator</h2>
+
+- Create a new folder for your api's called apis and add a js file inside of that (maybe name it the name of the api you're using).
+- Import axios from axios then add default export axios.create({baseURL: "http://blahblahblah"}) and inside of there add a baseURL with the base url as a string
+- Now inside actions/index.js you can import your api from "./apis/fileName". Convert your function into an async function by add async before the () and then add your await along with the file name and the end path in parenthesis e.g apiFileName.get("/posts")
+- Assign the await command to a variable called response, then add response to payload: within your return function.
+
+_Note_ At this point you may see an arror message on your application "Actions must be plain objects. Use custom middleware for async actions" This is where Redux-Thunk comes in to play

@@ -53,4 +53,16 @@ To recap this, view the lesson 161 - How to fetch data in a Redux app.
 - Now inside actions/index.js you can import your api from "./apis/fileName". Convert your function into an async function by add async before the () and then add your await along with the file name and the end path in parenthesis e.g apiFileName.get("/posts")
 - Assign the await command to a variable called response, then add response to payload: within your return function.
 
-_Note_ At this point you may see an arror message on your application "Actions must be plain objects. Use custom middleware for async actions" This is where Redux-Thunk comes in to play
+_Note_ At this point you may see an error message on your application "Actions must be plain objects. Use custom middleware for async actions" This is where Redux-Thunk comes in to play
+
+<h2 align="centre">Understanding Async Action Creators</h2>
+
+Q: What's wrong with fetchPosts?
+A: 2 things:
+
+- Action Creators must return plain JS objects with a type property (which we're not).
+- By the time our action gets to a reducer we won't have fetched the data.
+
+Whilst it looks like the return function in actions/index.js is returning JS objects, it's not. Remember, React is a framework that compiles your code from the > ES2016 code we write into ES2015 code which can't take types and payloads.
+
+Don't believe yourself? Add the all the code from const fetchPosts into babel.io and watch what is spues out.

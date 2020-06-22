@@ -66,3 +66,21 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+General Data Loading with Redux
+
+Component gets rendered to the screen
+
+Components 'componentDidMount' lifecycle method gets called
+
+We call action creator from 'componentDidMount'
+
+Action Creator runs code to make an API request
+
+API responds with data
+
+Action Creator returns an 'action' with the fecthed data on the payload property
+
+Some Reducer see's the action and returns the data from the payload
+
+Because we've generated a new state object, redux & react-redux cause our app to be rendered

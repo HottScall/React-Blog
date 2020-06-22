@@ -10,3 +10,10 @@ Redux = The Redux Library
 React-Redux = Integration layer between React & Redux
 Axios = Allows me to make network requests to external API's
 Redux-Thunk - Middleware to help make requests in a redux application
+
+<h1 align="centre"> Process </h1>
+
+- Clear out all original boiler plate information
+- Add main index.js. Import relevant dependancies and add provider tags for create store.
+- Add Reducers and Components folders with relevant files (App.js and Index.js). Add empty boiler template into index.js (reducers) to clear out any error messages regarding no reducers.
+-

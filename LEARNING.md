@@ -16,4 +16,5 @@ Redux-Thunk - Middleware to help make requests in a redux application
 - Clear out all original boiler plate information
 - Add main index.js. Import relevant dependancies and add provider tags for create store.
 - Add Reducers and Components folders with relevant files (App.js and Index.js). Add empty boiler template into index.js (reducers) to clear out any error messages regarding no reducers.
--
+- Added a dummy reducer to clear an error message within the console, for an example of this see this commit https://github.com/HottScall/React-Blog/commit/8c1258cc41a6423d182a3304b6235e8c0fb963ea
+- Create the PostList file and a class based PostList component, remember to import the PostList component to the App.js file and replace the App text with the new PostList component

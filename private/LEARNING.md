@@ -137,3 +137,17 @@ What is a middleware?
 - The most popular use of middleware is for dealing with async actions
 - We use Redux-Thunk as a middleware in these applications
 - A Redux Library can use multiple different middlewares on a single project
+
+<h2 align="centre">Behind the scenes with Redux-Thunk</h2>
+
+Normal rules of a a Redux Application:
+
+- Action Creators must return an Action Object
+- Actions must have property types
+- Actions can "optionally have a payload"
+
+Rules of a Redux Application with middleware:
+
+- Action Creators can return an Action Object OR return functions
+- If an Action Object gets returned, it must have a type
+- If an Action Object gets returned, it can have an optional payload

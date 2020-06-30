@@ -63,8 +63,54 @@ A: 2 things:
 - Action Creators must return plain JS objects with a type property (which we're not).
 - By the time our action gets to a reducer we won't have fetched the data.
 
-Whilst it looks like the return function in actions/index.js is returning JS objects, it's not. Remember, React is a framework that compiles your code from the > ES2016 code we write into ES2015 code which can't take types and payloads.
+_Action Creators must return plain JS objects with a type property (which we're not)._
+
+Whilst it looks like the return function in actions/index.js is returning JS objects, it's not. Remember, React is a framework that compiles your code from the > ES2016 code we write into ES2015 code.
 
 Unsure on this? Check out Lesson 164 in Modern React with Redux on Udemy.
 
 https://www.udemy.com/course/react-redux/learn/lecture/12586860#content
+
+Example flow diagram of what's happening:
+
+- PostList.js has a a componentDidMount function which requests this.props.fetchPosts().
+- What's likely happening in Redux is the store.dispatch is looking to collect fetchPosts()
+- In actions/index.js you have the following function:
+
+  export const fetchPosts = async()=>{
+  return jsonPlaceholder.get("/posts")
+  }
+
+  return{type: "FETCH_POSTS": payload: response}
+
+- When this code is compiled to ES2015 it gets compiled like a switch statement with cases, the store.dispatch is essentially looking for the first return statement, which is the request. Here is what it looks like once it's compiled.
+
+export const fetchPosts = async()=>{
+CASE: 0
+return jsonPlaceholder.get("/posts")
+}
+CASE: 1
+return{type: "FETCH_POSTS": payload: response}
+
+So the first case is actually the request, not the type and payload, hence the error message.
+
+If you're confused about this transfer the code into babel.io and watch it compile it and you will see.
+
+This is mainly down the fact we're using async awaits for an api along with Redux.
+
+<h2 align="centre">More on Async Awaits Action Creators</h2>
+
+_By the time our action gets to a reducer we won't have fetched the data._
+
+A reminder of our Redux Cycle -
+
+- To change the state of our application we call an ACTION CREATOR
+- This produces an ACTION
+- Which gets fed to DISPATCH
+- Which forwards the ACTION to a REDUCER
+- That then creates a new STATE
+
+Keep in mind that when we complete the entire redux cycle to update state this happens in a fraction of a millisecond, but where we are using an API we also have to make another request at the same time over to the API.
+The API request may take longer to retrieve the data from the API than the Redux Cycle does to process it's entire flow.
+This will result in the Redux Cycle believing there is no data to return which will cause an error "Hey, I've processed this but there's no data here"
+There is no way to delay the timing of the Redux cycle, hence the reason we can't use promises to return our data.

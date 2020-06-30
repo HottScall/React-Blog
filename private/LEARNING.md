@@ -119,3 +119,21 @@ There is no way to delay the timing of the Redux cycle, hence the reason we can'
 
 - Synchronous Action Creators = Instantly returns an action with data ready to go
 - Asynchronous Action Creators = Takes some amount of time to get the data and return it (anything that makes a network request will be an Async Action Creator and you have to install a middleware such as Redux-Thunk).
+
+Understanding middleware in our Redux Cycle:
+
+- To change the state of our application we call an ACTION CREATOR
+- This produces an ACTION
+- Which gets fed to DISPATCH
+  - DISPATCH forwards the ACTION to a MIDDLEWARE
+- Which then sends that ACTION to a REDUCER
+- That then creates a new STATE
+
+What is a middleware?
+
+- A plain JS function that gets called with every action that we dispatch
+- It has the ability to STOP, MODIFY and otherwise mess around with ACTIONS
+- There are lots of Open Source Middlewares that can be used
+- The most popular use of middleware is for dealing with async actions
+- We use Redux-Thunk as a middleware in these applications
+- A Redux Library can use multiple different middlewares on a single project

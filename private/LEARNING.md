@@ -114,3 +114,8 @@ Keep in mind that when we complete the entire redux cycle to update state this h
 The API request may take longer to retrieve the data from the API than the Redux Cycle does to process it's entire flow.
 This will result in the Redux Cycle believing there is no data to return which will cause an error "Hey, I've processed this but there's no data here"
 There is no way to delay the timing of the Redux cycle, hence the reason we can't replace the async/awaits and use promises to return our data instead.
+
+<h2 align="centre">Middlewares in Redux</h2>
+
+- Synchronous Action Creators = Instantly returns an action with data ready to go
+- Asynchronous Action Creators = Takes some amount of time to get the data and return it (anything that makes a network request will be an Async Action Creator and you have to install a middleware such as Redux-Thunk).

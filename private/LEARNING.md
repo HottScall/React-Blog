@@ -113,4 +113,4 @@ A reminder of our Redux Cycle -
 Keep in mind that when we complete the entire redux cycle to update state this happens in a fraction of a millisecond, but where we are using an API we also have to make another request at the same time over to the API.
 The API request may take longer to retrieve the data from the API than the Redux Cycle does to process it's entire flow.
 This will result in the Redux Cycle believing there is no data to return which will cause an error "Hey, I've processed this but there's no data here"
-There is no way to delay the timing of the Redux cycle, hence the reason we can't use promises to return our data.
+There is no way to delay the timing of the Redux cycle, hence the reason we can't replace the async/awaits and use promises to return our data instead.

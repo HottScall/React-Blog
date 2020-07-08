@@ -198,7 +198,7 @@ When using Reducers it makes sense to create a new file for each Reducers and th
 So as a recap:
 
 - We have an action creator which will _fetchPosts_
-- Our actions has a type: FETCH_POSTS and a paylod: response
+- Our actions has a type: FETCH_POSTS and a payload: response
 - Now we'll create a Reducer which collects postReducers, this will be responsible for looking for actions which have a type of FETCH_POSTS and any time it see's this it will pull off the payload: response and add it into an array
 
 reducers/
@@ -209,3 +209,22 @@ reducers/index.js
 
 - Import the postReducers files
 - Remove the dummy data and then replace it with postReducers: postReducers
+
+<h2 align="centre">Return values from Reducers</h2>
+
+A Reducer:
+
+- Must return any value other than "undefined"
+
+  - _NOTE_ Earlier in the application we input some dummy data into the reducer to stop the error message, this is an example of that).
+  - _REMEMBER_ Javascript functions must return something! A number, a string, an array, an object or null. If they do not return anything you will get an error returning undefined!
+
+- They are pure and they must return either state or data that is being used inside your application using only previous state and the action
+
+  - When you first start up your Redux application, each reducer will get automatically called 1 time.
+  - The first time that Reducer gets called it's going to receive 2 arguments. The first argument will have a value of undefined. The second argument some action object.
+  - The Reducer will then take the 2 initial argument and return some initial state value (E.G - State v1).
+  - The 2nd time that the Reducer gets called it's going to return (State v1).
+
+- Must not return reach 'out of itself' to decide what value to return
+- Must not mutate it's input state argument

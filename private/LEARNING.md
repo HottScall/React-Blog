@@ -232,3 +232,34 @@ A Reducer:
   - It shouldn't be making things like API requests for data.
 
 - Must not mutate it's input state argument
+  - This is quite a misleading rule,
+  - Anytime we change the contents of an array it's referred to as a mutation
+
+Below is the text from the Redux Github file around Reducers.
+
+let hasChanged = false
+// Set an intial value of state has changed to false
+
+const nextState: StateFromReducersMapObject<typeof reducers> = {}
+for (let i = 0; i < finalReducerKeys.length; i++) {
+// The for loop will loop through all the different reducers you have
+const key = finalReducerKeys[i]
+const reducer = finalReducers[key]
+const previousStateForKey = state[key]
+// This is the previous state for the Reducers
+const nextStateForKey = reducer(previousStateForKey, action)
+// nSFK is the magic, it takes the previous state and runs the action we have provided
+if (typeof nextStateForKey === 'undefined') {
+const errorMessage = getUndefinedStateErrorMessage(key, action)
+throw new Error(errorMessage)
+}
+// This is the check where Redux will look if your Reducer is returning undefined
+nextState[key] = nextStateForKey
+hasChanged = hasChanged || nextStateForKey !== previousStateForKey
+}
+// hasChanged will now check the values being returned. It wants to know if nextStateForKey and previousStateForKey are exactly the same in the memory
+// After that check, if the 2 arrays being compared are the same then hasChanged will be false, otherwise it will be true.
+hasChanged =
+hasChanged || finalReducerKeys.length !== Object.keys(state).length
+return hasChanged ? nextState : state
+}

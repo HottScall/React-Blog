@@ -227,4 +227,8 @@ A Reducer:
   - The 2nd time that the Reducer gets called it's going to return (State v1).
 
 - Must not return reach 'out of itself' to decide what value to return
+
+  - When a reducer gets called it should only look at 2 things, the previous value and the action object to decide what to return.
+  - It shouldn't be making things like API requests for data.
+
 - Must not mutate it's input state argument

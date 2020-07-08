@@ -183,6 +183,29 @@ action/index.js
 
 - You can remove both the async and awaits and replace the variable "response" to promise. We will be replacing this back shortly.
 - You now want to return an inner function which takes the dispatch and getState arguments and wraps the remainder of the function inside. You should now be returning both a function with dispatch and getState and another return statement which a type and a payload. You don't need 2 x return statements.
-- Now replace that return statment with dispatch, which take the type and the payload.
+- Now replace that return statement with dispatch, which take the type and the payload.
 - Add the async/awaits back into the return function.
 - Refactored the final function. See this commit for the last piece.
+
+You can see the final changes to the component here:
+
+https://github.com/HottScall/React-Blog/commit/94c6b1e7d168820e7eda50c775972ab69d224cb5
+
+<h2 align="centre">Rules of Reducers</h2>
+
+When using Reducers it makes sense to create a new file for each Reducers and then imports them into the reducers/index.js file.
+
+So as a recap:
+
+- We have an action creator which will _fetchPosts_
+- Our actions has a type: FETCH_POSTS and a paylod: response
+- Now we'll create a Reducer which collects postReducers, this will be responsible for looking for actions which have a type of FETCH_POSTS and any time it see's this it will pull off the payload: response and add it into an array
+
+reducers/
+
+- Create a postsReducers.js file and add an export default statement which simply returns a string or 123 or anything you want.
+
+reducers/index.js
+
+- Import the postReducers files
+- Remove the dummy data and then replace it with postReducers: postReducers

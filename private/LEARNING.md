@@ -167,3 +167,14 @@ Now using Redux Thunk we can manually disptach an action, ultimately meaning tha
 For more information on Redux Thunk, see here: https://github.com/reduxjs/redux-thunk
 
 To get a reminder of what the function you need to use Redux Thunk then click in src folder and then into the index.js file which contains the function required for Redux Thunk.
+
+<h2 align="centre">Shortened Syntx with Redux Thunk</h2>
+
+If you've not installed Redux-Thunk into your project by now, do it. Once you have installed into your project you also have to wire it up to the Redux Store.
+
+root/index.js
+
+- install thunk from "redux-think"
+- add a second argument to the redux import, next to createStore called applyMiddleware
+- Remove createStore from the Provider tag and assign it a variable above your render method, then call that variable in the provider tag
+- Now call the applyMiddleware within your createStore, next to the provider and pass in thunk.

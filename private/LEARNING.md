@@ -151,3 +151,5 @@ Rules of a Redux Application with middleware:
 - Action Creators can return an Action Object OR return functions
 - If an Action Object gets returned, it must have a type
 - If an Action Object gets returned, it can have an optional payload
+
+To understand a little more about how Redux Thunk works as a flow, look at the Redux Thunk Flow picture in private folder.

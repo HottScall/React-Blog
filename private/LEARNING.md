@@ -153,3 +153,17 @@ Rules of a Redux Application with middleware:
 - If an Action Object gets returned, it can have an optional payload
 
 To understand a little more about how Redux Thunk works as a flow, look at the Redux Thunk Flow picture in private folder.
+
+_Important to note_
+
+If your action is returning a function as opposed to an object then the function that you call MUST take 2 separate function arguments of:
+
+dispatch - Which we can pass through various actions which are processed and then forwarded on to our Reducers. Ultimately provides unlimited power to make changes to the Redux side of our application.
+
+getState - This can be called on the Redux Store which will return all of the data/state inside the the store.
+
+Now using Redux Thunk we can manually disptach an action, ultimately meaning that we don't have the overload previously mentioned where the Redux Store request will be completed before your API returns data, thus preventing error messages around "no data".
+
+For more information on Redux Thunk, see here: https://github.com/reduxjs/redux-thunk
+
+To get a reminder of what the function you need to use Redux Thunk then click in src folder and then into the index.js file which contains the function required for Redux Thunk.

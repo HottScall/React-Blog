@@ -181,5 +181,8 @@ root/index.js
 
 action/index.js
 
-- You can remove both the async and awaits and replace the variable "response" to promise.
+- You can remove both the async and awaits and replace the variable "response" to promise. We will be replacing this back shortly.
 - You now want to return an inner function which takes the dispatch and getState arguments and wraps the remainder of the function inside. You should now be returning both a function with dispatch and getState and another return statement which a type and a payload. You don't need 2 x return statements.
+- Now replace that return statment with dispatch, which take the type and the payload.
+- Add the async/awaits back into the return function.
+- Refactored the final function. See this commit for the last piece.

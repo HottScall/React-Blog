@@ -178,3 +178,8 @@ root/index.js
 - add a second argument to the redux import, next to createStore called applyMiddleware
 - Remove createStore from the Provider tag and assign it a variable above your render method, then call that variable in the provider tag
 - Now call the applyMiddleware within your createStore, next to the provider and pass in thunk.
+
+action/index.js
+
+- You can remove both the async and awaits and replace the variable "response" to promise.
+- You now want to return an inner function which takes the dispatch and getState arguments and wraps the remainder of the function inside. You should now be returning both a function with dispatch and getState and another return statement which a type and a payload. You don't need 2 x return statements.
